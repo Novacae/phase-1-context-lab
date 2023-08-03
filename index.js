@@ -1,4 +1,63 @@
+const { it } = require("mocha")
+
 /* Your Code Here */
+function createEmployeeRecord(arry) {
+    return {
+        firstName : arry[0],
+        familyName : arry[1],
+        title : arry[2],
+        payPerHour : arry[3],
+        timeInEvents : [],
+        timeOutEvents : [],
+    }
+}
+   function createEmployeeRecords (arryData) {
+    return arryData.map(function(arry){
+        return createEmployeeRecord(arry)
+
+    })
+ }
+        function  createTimeInEvent (dateStamp) {
+        let [date,hour] = dateStamp.split(' ')
+
+        this.timeInEvents.push({
+            type: "TimeIn",
+            hour : parseInt(hour,10),
+            date,
+        }
+      )
+return this
+    
+    }
+
+    function createTimeOutEvent(dateStamp) {
+        let [date,hour] = dateStamp.split(' ')
+
+        
+        this.timeOutEvents.push({
+            type: "TimeOut",
+            hour: parseInt(hour, 10),
+            date,
+        })
+        return this
+        
+    }
+
+    function hoursWorkedOnDate(lookedUpDate) {
+        let TimeInsideEv = timeInEvents.find(function(ev){
+            return ev.date === lookedUpDate
+        })
+        let TimeOUuutEv = timeOutEvents.find(function(ev){
+            return ev.date === lookedUpDate
+        })
+        return TimeOUuutEv.hour - TimeInsideEv.hour
+    }
+         
+     function wagesEarnedOnDate(soughtAfterDate){
+        let wages = hoursWorkedOnDate.call(this,soughtAfterDate)
+        this.payPerHour
+        return parseFloat(wages(2))
+     }
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
